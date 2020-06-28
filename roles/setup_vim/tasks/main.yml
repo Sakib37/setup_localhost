@@ -1,0 +1,16 @@
+---
+- name: Install curl, git and vim 
+  become: true
+  apt:
+    pkg:
+    - curl 
+    - git
+    - vim
+
+- name: Copy vimrc file
+  copy:
+    src: "{{ role_path }}/files/vimrc"
+    dest: ~/.vimrc
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0664'

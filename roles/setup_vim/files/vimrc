@@ -1,0 +1,50 @@
+" #############  Global  #############
+" Line number
+set number
+" New lines inherit the indentation of previous lines
+set autoindent
+" Convert tabs to spaces
+set expandtab
+" Indent using four spaces
+set tabstop=4
+" Ignore case when searching
+set ignorecase
+" Enable search highlighting
+set hlsearch
+" Automatically switch search to case-sensitive when search query contains an uppercase letter
+set smartcase
+" Enable line wrapping within screen size
+set wrap
+" Avoid wrapping a line in the middle of a word
+set linebreak
+" Disable swap files
+set noswapfile
+" Increase the undo limit
+set history=1000
+" #############  Global_END  #############
+
+
+" Plugin settings
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Initialize plugin system
+call plug#end()
+
+"          #############  NERDTree  ##################
+" Shortcut to open/close NERDTree
+" https://github.com/preservim/nerdtree#how-can-i-map-a-specific-key-or-shortcut-to-open-nerdtree
+map <C-n> :NERDTreeToggle<CR>
+"         #############  NERDTree_END ################

@@ -1,0 +1,10 @@
+---
+- name: Configure debian system
+  gather_facts: false
+  hosts: localhost
+  connection: local
+
+  vars:
+
+  roles:
+    - { role: setup_vim }
